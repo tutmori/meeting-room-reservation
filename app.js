@@ -16,7 +16,11 @@ const rooms = [
     "A会議室",
     "B会議室",
     "C会議室",
-    "D会議室"
+    "D会議室",
+    "Wi-Fi① 5G",
+    "Wi-Fi② 5G",
+    "Wi-Fi③ 4G",
+    "Wi-Fi④ 4G"
 ];
 const START_HOUR = 7;
 const END_HOUR = 22;
@@ -244,6 +248,11 @@ const cancelButton =
         "cancelButton"
     );
 
+const allDayButton =
+    document.getElementById(
+        "allDayButton"
+    );
+
 const reservedByInput =
     document.getElementById(
         "reservedBy"
@@ -262,6 +271,11 @@ const endTimeSelect =
 const purposeInput =
     document.getElementById(
         "purpose"
+    );
+
+const reservationColorSelect =
+    document.getElementById(
+        "reservationColor"
     );
 
 const datePicker = document.getElementById("datePicker");
@@ -683,6 +697,12 @@ saveButton.addEventListener(
             return;
         }
 
+        console.log(
+            "選択カラー:",
+            reservationColorSelect.value
+        );
+
+
         // 保存する予約データを作成
         const reservation = {
 
@@ -696,7 +716,10 @@ saveButton.addEventListener(
                 reservedBy,
 
             purpose:
-                purposeInput.value.trim()
+                purposeInput.value.trim(),
+
+            color:
+                reservationColorSelect.value
 
         };
 
@@ -725,7 +748,10 @@ saveButton.addEventListener(
                     reservation.reservedBy,
 
                     purpose:
-                    reservation.purpose
+                    reservation.purpose,
+
+                    color:
+                    reservation.color
                 })
                 .eq(
                 "id",
@@ -770,7 +796,10 @@ saveButton.addEventListener(
                             reservation.reservedBy,
 
                         purpose:
-                            reservation.purpose
+                            reservation.purpose,
+
+                        color:
+                            reservation.color
                     }
                 ]);
 
@@ -852,6 +881,10 @@ function renderReservations() {
 
             reservationElement.className =
                 "reservation";
+
+            reservationElement.classList.add(
+                `reservation-${reservation.color}`
+            );
             
             /**予約ブロックに名札（index）付け*/
             reservationElement.dataset.index =
@@ -1137,6 +1170,9 @@ editButton.addEventListener(
 
         purposeInput.value =
             reservation.purpose;
+
+        reservationColorSelect.value =
+            reservation.color || "blue";
         
         /**選択済みの時間を反映*/
         startTimeSelect.value =
@@ -1275,8 +1311,10 @@ const {
                         item.reserved_by,
 
                     purpose:
-                        item.purpose
+                        item.purpose,
 
+                    color:
+                        item.color || "blue"
                 };
 
             }
@@ -1292,3 +1330,15 @@ const {
 
 }   
 loadReservationsFromSupabase();
+
+allDayButton.addEventListener(
+    "click",
+    function () {
+
+        startTimeSelect.value = 0;
+
+        endTimeSelect.value =
+            totalMinutes;
+
+    }
+);

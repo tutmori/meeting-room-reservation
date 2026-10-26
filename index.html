@@ -16,9 +16,18 @@
         <h1>会議室予約NEO</h1>
     </header>
 
+
+
     <main>
 
         <div class="date-controls">
+
+            <a
+                href="guide.html"
+                class="guide-button"
+            >
+                使い方はこちら！
+            </a>
 
             <button id="prevDay">＜</button>
 
@@ -72,6 +81,13 @@
                     <select id="endTimeSelect">
                     </select>
 
+                    <button
+                        type="button"
+                        id="allDayButton"
+                    >
+                        終日
+                    </button>
+
                     <label for="reservedBy">
                         予約者
                     </label>
@@ -97,8 +113,36 @@
                             来客
                         </option>
 
+                        <option value="出張">
+                            出張
+                        </option>
+
                         <option value="その他">
                             その他
+                        </option>
+
+                    </select>
+
+                    <label for="reservationColor">
+                        カラー
+                    </label>
+
+                    <select id="reservationColor">
+
+                        <option value="blue">
+                            ブルー
+                        </option>
+
+                        <option value="green">
+                            グリーン
+                        </option>
+
+                        <option value="orange">
+                            オレンジ
+                        </option>
+
+                        <option value="purple">
+                            パープル
                         </option>
 
                     </select>

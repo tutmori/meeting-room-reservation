@@ -105,6 +105,14 @@ main {
     transform: translateX(-50%);
 }
 
+.time-label:first-child {
+    transform: translateX(0);
+}
+
+.time-label:last-child {
+    transform: translateX(-100%);
+}
+
 .drag-selection {
     position: absolute;
 
@@ -227,4 +235,51 @@ main {
     overflow: hidden;
 
     font-size: 12px;
+}
+
+#allDayButton {
+    margin-top: 10px;
+}
+
+.reservation-blue {
+    background-color: #dcecff;
+    border-left-color: #2878d0;
+}
+
+.reservation-green {
+    background-color: #dff3e4;
+    border-left-color: #3a9b58;
+}
+
+.reservation-orange {
+    background-color: #fff0d8;
+    border-left-color: #e28a20;
+}
+
+.reservation-purple {
+    background-color: #eee3f7;
+    border-left-color: #8854b8;
+}
+
+.guide-button {
+    display: inline-block;
+
+    margin-left: 20px;
+    /*margin-top: 16px;*/
+    padding: 8px 14px;
+
+    color: #2878d0;
+    background-color: #ffffff;
+
+    border: 1px solid #2878d0;
+    border-radius: 6px;
+
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.guide-button:hover {
+    color: #ffffff;
+    background-color: #2878d0;
 }
