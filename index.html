@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>会議室予約</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>会議室予約NEO</h1>
+    </header>
+
+    <main>
+
+        <div class="date-controls">
+
+            <button id="prevDay">＜</button>
+
+            <input type="date" id="datePicker">
+
+            <button id="nextDay">＞</button>
+
+            <button id="todayButton">今日</button>
+
+        </div>
+
+        <div id="schedule">
+
+            <div class="time-header">
+
+                <div class="room-label"></div>
+
+                <div class="timeline" id="timeHeader"></div>
+            
+            </div>
+
+            <div id="rooms"></div>
+
+        </div>
+
+    </main>
+
+        <div id="reservationModal" class="modal hidden">
+    
+
+
+                <div class="modal-content">
+
+                    <h2>会議室を予約</h2>
+
+                    <p id="selectedInfo">
+                        会議室と時間がここに表示されます
+                    </p>
+
+                    <label>
+                    開始時間
+                    </label>
+
+                    <select id="startTimeSelect">
+                    </select>
+
+                    <label>
+                    終了時間
+                    </label>
+
+                    <select id="endTimeSelect">
+                    </select>
+
+                    <label for="reservedBy">
+                        予約者
+                    </label>
+
+                    <input
+                        type="text"
+                        id="reservedBy"
+                        maxlength="10"
+                        placeholder="例：山田 太郎"
+                    >
+
+                    <label for="purpose">
+                        用途
+                    </label>
+
+                    <select id="purpose">
+
+                        <option value="打ち合わせ">
+                            打ち合わせ
+                        </option>
+
+                        <option value="来客">
+                            来客
+                        </option>
+
+                        <option value="その他">
+                            その他
+                        </option>
+
+                    </select>
+
+                    <div class="modal-buttons">
+
+                        <button id="cancelButton">
+                            キャンセル
+                        </button>
+
+                        <button id="saveButton">
+                            予約する
+                        </button>
+
+                    </div>
+
+                </div>
+
+        </div>
+
+    <div id="detailModal" class="modal hidden">
+
+        <!-- 予約詳細モーダル -->
+        <div class="modal-content">
+
+            <h2>予約詳細</h2>
+
+            <div id="detailInfo">
+            </div>
+
+            <div class="modal-buttons">
+
+                <button id="closeDetailButton">
+                    閉じる
+                </button>
+
+                <button id="editButton">
+                編集
+                </button>
+
+                <button id="deleteButton">
+                    削除
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>

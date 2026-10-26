@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f5f6f8;
+    color: #333333;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 18px 30px;
+    border-bottom: 1px solid #dddddd;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+main {
+    padding: 30px;
+}
+.date-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.date-controls button {
+    padding: 8px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.date-controls button:hover {
+    background-color: #eeeeee;
+}
+
+#datePicker {
+    padding: 8px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#schedule {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.room-row {
+    display: flex;
+    border-top: 1px solid #dddddd;
+}
+
+.room-label {
+    width: 120px;
+    min-width: 120px;
+    padding: 20px 16px;
+    box-sizing: border-box;
+
+    border-right: 1px solid #dddddd;
+
+    font-weight: 600;
+}
+
+.timeline {
+    flex: 1;
+    min-height: 60px;
+    position: relative;
+
+    background-image:
+        linear-gradient(
+            to right,
+            #dddddd 1px,
+            transparent 1px
+        );
+
+    background-size:
+        calc(100% / 30) 100%;
+}
+
+.time-header {
+    display: flex;
+}
+
+.time-header .timeline {
+    height: 45px;
+    min-height: 45px;
+    border-left: 0;
+}
+
+.time-label {
+    position: absolute;
+    top: 14px;
+
+    font-size: 12px;
+    color: #666666;
+
+    transform: translateX(-50%);
+}
+
+.drag-selection {
+    position: absolute;
+
+    top: 5px;
+    bottom: 5px;
+
+    background-color: rgba(40, 120, 208, 0.25);
+
+    border: 2px solid #2878d0;
+    border-radius: 5px;
+
+    box-sizing: border-box;
+
+    pointer-events: none;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    width: 360px;
+    padding: 24px;
+
+    background-color: #ffffff;
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 36px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#selectedInfo {
+    margin-bottom: 20px;
+    padding: 12px;
+
+    background-color: #f3f7fc;
+    border-radius: 6px;
+
+    line-height: 1.6;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 6px;
+
+    font-weight: 600;
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+
+    font-size: 14px;
+}
+
+.modal-content input:focus {
+    border-color: #2878d0;
+    outline: 2px solid rgba(40, 120, 208, 0.2);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 24px;
+}
+
+#saveButton {
+    color: #ffffff;
+    background-color: #2878d0;
+    border-color: #2878d0;
+}
+
+#saveButton:hover {
+    background-color: #1f65b5;
+}
+
+.reservation {
+    position: absolute;
+
+    top: 6px;
+    bottom: 6px;
+
+    background-color: #dcecff;
+
+    border-left: 4px solid #2878d0;
+
+    border-radius: 5px;
+
+    padding: 6px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    font-size: 12px;
+}
