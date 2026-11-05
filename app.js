@@ -1,10 +1,19 @@
 console.log("app.jsが読み込まれました");
 
-const SUPABASE_URL =
+/*個人用Githubアカウントで作成したSuapabaseのDB接続用*/
+/*const SUPABASE_URL =
     "https://jblsoyilshrbdxwkvekh.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_Rvpz5kBm5vj-wpjDeN4ftw_b2vbBsWc";
+    "sb_publishable_Rvpz5kBm5vj-wpjDeN4ftw_b2vbBsWc";*/
+
+/*会社用Supabaseアカウント上のDB接続用*/
+const SUPABASE_URL =
+    "https://gatpgqqlgceihgadakhs.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable__rcxy_w0SNjuBrdNM1SZHQ_DbVl-uDc";
+
 
 const supabaseClient =
     window.supabase.createClient(
@@ -1342,3 +1351,26 @@ allDayButton.addEventListener(
 
     }
 );
+
+const reservationsChannel =
+    supabaseClient
+        .channel("reservations-changes")
+        .on(
+            "postgres_changes",
+            {
+                event: "*",
+                schema: "public",
+                table: "reservations"
+            },
+            async function (payload) {
+
+                console.log(
+                    "Realtime変更検知",
+                    payload
+                );
+
+                await loadReservationsFromSupabase();
+
+            }
+        )
+        .subscribe();
