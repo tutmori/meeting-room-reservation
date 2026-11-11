@@ -3,14 +3,13 @@ console.log("app.jsが読み込まれました");
 /*個人用Githubアカウントで作成したSuapabaseのDB接続用*/
 /*const SUPABASE_URL =
     "https://jblsoyilshrbdxwkvekh.supabase.co";
-
 const SUPABASE_KEY =
     "sb_publishable_Rvpz5kBm5vj-wpjDeN4ftw_b2vbBsWc";*/
+
 
 /*会社用Supabaseアカウント上のDB接続用*/
 const SUPABASE_URL =
     "https://gatpgqqlgceihgadakhs.supabase.co";
-
 const SUPABASE_KEY =
     "sb_publishable__rcxy_w0SNjuBrdNM1SZHQ_DbVl-uDc";
 
@@ -21,6 +20,7 @@ const supabaseClient =
         SUPABASE_KEY
     );
 
+/*設備・備品の配列　ここを変えれば画面に反映される　設定値 */
 const rooms = [
     "A会議室",
     "B会議室",
@@ -31,16 +31,16 @@ const rooms = [
     "Wi-Fi③ 4G",
     "Wi-Fi④ 4G"
 ];
+/*時間帯の変更が必要であれば、ここから。　設定値*/
 const START_HOUR = 7;
 const END_HOUR = 22;
-const SLOT_MINUTES = 30;
 
+/*30分刻みで予約します*/
+const SLOT_MINUTES = 30;
 const totalMinutes =
     (END_HOUR - START_HOUR) * 60;
-
 const slotCount =
     totalMinutes / SLOT_MINUTES;
-
 
 
 let isDragging = false;
@@ -48,19 +48,14 @@ let dragStartMinutes = null;
 let currentTimeline = null;
 let dragCurrentMinutes = null;
 let selectionElement = null;
-
 let selectedRoom = null;
 let selectedStart = null;
 let selectedEnd = null;
-
-let selectedReservationIndex =
-    null;
-
+let selectedReservationIndex =null;
 let isEditing = false;
 let editingIndex = null;
+let editingReservation =null;
 
-let editingReservation =
-    null;
 
 const detailModal =
     document.getElementById(
@@ -87,14 +82,8 @@ const editButton =
         "editButton"
     );
 
-/**ローカルストレージ用意*/
+/*Supabaseから取得した予約データの保持用*/
 const reservations = [];
-
-console.log("時間枠の数:", slotCount);
-
-console.log("予約可能時間:", START_HOUR, "～", END_HOUR);
-
-console.log("表示する時間:", totalMinutes, "分");
 
 const timeHeader =
     document.getElementById("timeHeader");
